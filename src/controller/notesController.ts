@@ -3,10 +3,7 @@ const router = express.Router();
 
 import Note , {INote} from '../model/notes';
 
-import { createNotes } from '../service/notesService';
-import { getAllNote } from '../service/notesService';
-import { getNotesById } from '../service/notesService';
-import { updateNotes } from '../service/notesService';
+import { createNotes , getAllNote , getNotesById , updateNotes} from '../service/notesService';
 
 // create note
 router.post("/notes" , async (req: Request  , res: Response)=>{

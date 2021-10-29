@@ -1,10 +1,7 @@
 import { ObjectId, Schema } from 'mongoose';
 import {INote} from '../model/notes';
 import { IUser } from '../model/user';
-import { createNote } from '../repository/notesRepository';
-import { getAllNotes } from '../repository/notesRepository';
-import { getNoteById } from '../repository/notesRepository';
-import { updateNote } from '../repository/notesRepository';
+import { createNote , getAllNotes , getNoteById , updateNote} from '../repository/notesRepository';
 
 export let createNotes = async (note: INote)=>{
     return await createNote(note);
