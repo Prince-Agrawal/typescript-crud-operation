@@ -29,8 +29,10 @@ router.get("/notes/:id" , async (req: Request  , res: Response)=>{
 // update note by id
 router.put("/notes" , async (req: Request  , res: Response)=>{
 
-    let note = updateNotes(req.query.id, req.body);
-    res.json(note);
+    // let data = updateNotes(req.query.id, req.body);
+    // console.log(req.query.id);
+    let data = await Note.findOneAndUpdate({_id: req.query.id}, {$set: req.body} , {new: true});
+    res.json(data);
 })
 
 module.exports = router;

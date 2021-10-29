@@ -22,7 +22,8 @@ export let getNoteById = async(id: IUser["_id"])=>{
     return data;
 }
 
-export let updateNote = async(id: any, note: object)=>{
-    let data = await Note.findOneAndUpdate({_id: id}, {$set: note} , {new: true});
+export let updateNote = async(id: any, note: any)=>{
+    console.log(id , note)
+    let data = await Note.findOneAndUpdate({_id: id}, {$set: {note}} , {new: true});
     return data;
 }
