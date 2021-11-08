@@ -20,10 +20,10 @@ export let getAllNotes = async()=>{
 export let getNoteById = async(id: IUser["_id"])=>{
     let data = await Note.findById(id);
     return data;
+    
 }
 
 export let updateNote = async(id: any, note: any)=>{
-    console.log(id , note)
-    let data = await Note.findOneAndUpdate({_id: id}, {$set: {note}} , {new: true});
+    let data = await Note.findOneAndUpdate({_id: id}, {$set: note} , {new: true});
     return data;
 }
