@@ -1,19 +1,18 @@
 import express, { Request, Response, Application } from 'express';
-const router = express.Router();
-
 import Note , {INote} from '../model/notes';
-
 import { createNotes , getAllNote , getNotesById , updateNotes} from '../service/notesService';
+
+const router = express.Router();
 
 // create note
 router.post("/notes" , async (req: Request  , res: Response)=>{
-    let note: INote = await createNotes(req.body);
+    const note: INote = await createNotes(req.body);
     res.json(note);
 })
 
 // get all note
 router.get("/notes" , async (req: Request  , res: Response)=>{
-    let notes: INote[] = await getAllNote();
+    const notes: INote[] = await getAllNote();
     res.json(notes);
 })
 
@@ -32,4 +31,4 @@ router.put("/notes" , async (req: Request  , res: Response)=>{
     res.json(data);
 })
 
-module.exports = router;
+export default router;

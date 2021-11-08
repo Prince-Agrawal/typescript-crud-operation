@@ -1,12 +1,12 @@
 import express, { Request, Response, Application } from 'express';
+import User, { IUser } from '../model/user';
+import * as userObj from '../service/userService';
+
 const router = express.Router();
 
-import User, { IUser } from '../model/user';
-import { createUsers } from '../service/userService';
-
 router.post("/" , async(req: Request  , res: Response)=>{
-    let user: IUser = await createUsers(req.body.name);
+    const user: IUser = await userObj.createUser(req.body.name);
     res.json(user);
 })
 
-module.exports = router;
+export default router;

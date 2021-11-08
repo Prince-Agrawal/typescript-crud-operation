@@ -1,5 +1,4 @@
 import { createNotes , getAllNote , getNotesById , updateNotes} from '../service/notesService';
-import Note, {INote} from '../model/notes';
 
 export const resolvers = {
     Query: {
@@ -17,9 +16,6 @@ export const resolvers = {
         },
         async updateNote(_:void, args: any){
             return updateNotes(args.id , args.input);
-            // const note = args.input;
-            // console.log(args.id);
-            // let data = await Note.findOneAndUpdate({_id: args.id}, {$set: note} , {new: true});
         }
     }
 }

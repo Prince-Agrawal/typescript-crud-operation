@@ -1,7 +1,7 @@
 import User, { IUser } from '../model/user';
 
-export let createUser = async(name: string) =>{
-    let user: IUser = await User.create({
+export const createUser = async(name: string) =>{
+    const user: IUser = await User.create({
         name: name
     })
 

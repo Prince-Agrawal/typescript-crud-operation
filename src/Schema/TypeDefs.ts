@@ -1,7 +1,4 @@
 import { gql } from 'apollo-server-express';
-import { Schema } from 'mongoose';
-
-// const participantType = Schema.Types.ObjectId;
 
 export const typeDefs = gql`
     type Note {
