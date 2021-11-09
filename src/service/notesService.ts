@@ -1,4 +1,5 @@
 import { ObjectId, Schema } from 'mongoose';
+import mongoose from 'mongoose'
 import {INote} from '../model/notes';
 import { IUser } from '../model/user';
 import { createNote , getAllNotes , getNoteById , updateNote} from '../repository/notesRepository';
@@ -15,6 +16,6 @@ export const getNotesById = async(id: IUser["_id"])=>{
     return await getNoteById(id);
 }
 
-export const updateNotes = async(id: any, note: any)=>{
+export const updateNotes = async(id: any , note: Partial<INote>)=>{
     return await updateNote(id , note);
 }

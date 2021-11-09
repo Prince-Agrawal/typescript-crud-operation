@@ -1,6 +1,7 @@
 import { Schema } from 'mongoose';
 import Note, {INote} from '../model/notes';
 import { IUser } from '../model/user';
+import mongose from 'mongoose'
 
 export const createNote = async(note: INote)=>{
     const data: INote = await Note.create({
@@ -23,7 +24,7 @@ export const getNoteById = async(id: IUser["_id"])=>{
     
 }
 
-export const updateNote = async(id: any, note: any)=>{
+export const updateNote = async(id: any, note: Partial<INote>)=>{
     const data = await Note.findOneAndUpdate({_id: id}, {$set: note} , {new: true});
     return data;
 }
