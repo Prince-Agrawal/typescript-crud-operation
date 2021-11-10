@@ -1,25 +1,18 @@
 import express, { Request, Response, Application } from 'express';
 import mongoose from 'mongoose';
 import { ApolloServer } from "apollo-server-express";
-import { typeDefs } from "./Schema/TypeDefs";
-import { resolvers } from "./Schema/Resolvers";
+import { typeDefs } from "./schema/TypeDefs";
+import { resolvers } from "./schema/Resolvers";
 import notesRoute from './controller/notesController';
 import userDetailRoute from './controller/usersController';
+import *  as constObj from './util/constant';
 
 require('dotenv').config();
 const app = express();
 const server = new ApolloServer({ typeDefs , resolvers });
 
-const PORT: number = 5000;
+const PORT: number = constObj.PORT;
 app.use(express.json());
-
-// const apolloServerSetup = async() =>{
-//   await server.start()
-//   server.applyMiddleware({app });
-// }
-
-// apolloServerSetup();
-
 
 
 app.use('/' , notesRoute);
