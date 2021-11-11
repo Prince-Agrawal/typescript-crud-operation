@@ -1,8 +1,8 @@
 import express, { Request, Response, Application } from 'express';
 import mongoose from 'mongoose';
 import { ApolloServer } from "apollo-server-express";
-import { typeDefs } from "./Schema/TypeDefs";
-import { resolvers } from "./Schema/Resolvers";
+import { typeDefs } from "./schema/TypeDefs";
+import { resolvers } from "./schema/Resolvers";
 import notesRoute from './controller/notesController';
 import userDetailRoute from './controller/usersController';
 
