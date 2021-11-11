@@ -1,4 +1,4 @@
-import { createNotes , getAllNote , getNotesById , updateNotes} from '../service/notesService';
+import { createNotes , getAllNote , getNotesById , updateNotes} from '../../service/notesService';
 
 export const resolvers = {
     Query: {
