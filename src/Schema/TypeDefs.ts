@@ -15,12 +15,12 @@ export const typeDefs = gql`
 
     type Query{
         getAllNotes : [Note]
-        getNoteById(id: String): Note
+        getNoteById(id: String!): Note
     }
 
     type Mutation{
         createNote(input: NoteInput): Note
-        updateNote(id: String , input: NoteInput): Note
+        updateNote(id: String! , input: NoteInput): Note
     }
 
 `

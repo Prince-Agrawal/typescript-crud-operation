@@ -6,6 +6,7 @@ import { resolvers } from "./schema/Resolvers";
 import notesRoute from './controller/notesController';
 import userDetailRoute from './controller/usersController';
 import *  as constObj from './util/constant';
+import { rejects } from 'assert';
 
 require('dotenv').config();
 const app = express();
@@ -28,7 +29,7 @@ const bootStrap = async ()=>{
 
   // let db: string = 'mongodb+srv://prince:Prince1009@cluster0.m4ifg.mongodb.net/typescript?retryWrites=true&w=majority';
   // Connect to MongoDB
-  mongoose
+  await mongoose
     .connect(
       process.env.MONGO_URI || ""
     )
@@ -36,9 +37,11 @@ const bootStrap = async ()=>{
     .catch(err => console.log(err));
 }
 
-bootStrap();
 
-app.listen(PORT , ()=>{
-  
+bootStrap().then(()=>{
+  app.listen(PORT , async ()=>{
     console.log(`🚀 Server ready at http://localhost:5000${server.graphqlPath}`);
+  })
+}).catch(()=>{
+  console.log("Failed")
 })
