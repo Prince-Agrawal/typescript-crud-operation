@@ -1,4 +1,5 @@
 import express, { Request, Response, Application } from 'express';
+import { GraphQLUpload  , graphqlUploadExpress } from 'graphql-upload';
 import mongoose from 'mongoose';
 import { ApolloServer } from "apollo-server-express";
 import { typeDefs } from "./schema/TypeDefs";
@@ -23,6 +24,7 @@ const bootStrap = async ()=>{
 
   // apollo server starter
   await server.start()
+  app.use(graphqlUploadExpress());
   server.applyMiddleware({app });
 
 

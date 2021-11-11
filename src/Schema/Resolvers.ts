@@ -1,22 +1,28 @@
-import { createNotes , getAllNote , getNotesById , updateNotes} from '../service/notesService';
+
+import { GraphQLUpload  , graphqlUploadExpress } from 'graphql-upload'
+// import { finished } from 'stream/promises';
 
 export const resolvers = {
+    Upload: GraphQLUpload,
+
     Query: {
-        getAllNotes(){
-            return getAllNote();
-        },
-        getNoteById(_: void, args: any){
-            return getNotesById(args.id);
+        otherFields(){
+            return true;
         }
     },
-
+  
     Mutation: {
-        createNote(_: void, args: any){
-            return createNotes(args.input);
-        },
-        async updateNote(_:void, args: any){
-            return updateNotes(args.id , args.input);
-        }
-    }
+      singleUpload: async (_:void, args:any) => {
+        const { createReadStream, filename, mimetype, encoding } = await args.file;
+
+        const stream = createReadStream();
+  
+        const out = require('fs').createWriteStream(`./uploadFiles/${filename}`);
+        stream.pipe(out);
+  
+        return { filename, mimetype, encoding };
+      },
+    },
+  
 }
 

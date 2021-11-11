@@ -1,26 +1,19 @@
 import { gql } from 'apollo-server-express';
 
 export const typeDefs = gql`
-    type Note {
-        title: String,
-        discription: String,
-        participants: [String]
+    scalar Upload
+
+    type File {
+        filename: String!
+        mimetype: String!
+        encoding: String!
     }
 
-    input NoteInput{
-        title: String,
-        discription: String,
-        participants: [String]
+    type Query {
+        otherFields: Boolean!
     }
 
-    type Query{
-        getAllNotes : [Note]
-        getNoteById(id: String): Note
+    type Mutation {
+        singleUpload(file: Upload!): File!
     }
-
-    type Mutation{
-        createNote(input: NoteInput): Note
-        updateNote(id: String , input: NoteInput): Note
-    }
-
 `
