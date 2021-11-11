@@ -1,15 +1,15 @@
 import express, { Request, Response, Application } from 'express';
 import mongoose from 'mongoose';
 import { ApolloServer } from "apollo-server-express";
-import { typeDefs } from "./schema/TypeDefs";
-import { resolvers } from "./schema/Resolvers";
 import notesRoute from './controller/notesController';
 import userDetailRoute from './controller/usersController';
 import *  as constObj from './util/constant';
+import { application } from './schema/application';
 
 require('dotenv').config();
 const app = express();
-const server = new ApolloServer({ typeDefs , resolvers });
+const schema = application.createSchemaForApollo();
+const server = new ApolloServer({ schema });
 
 const PORT: number = constObj.PORT;
 app.use(express.json());
