@@ -19,3 +19,7 @@ export const getNotesById = async(id: IUser["_id"])=>{
 export const updateNotes = async(id: any , note: Partial<INote>)=>{
     return await updateNote(id , note);
 }
+
+export const sum = (a:number , b:number)=>{
+    return a+b;
+}
