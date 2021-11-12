@@ -1,6 +1,5 @@
 
-import { GraphQLUpload  , graphqlUploadExpress } from 'graphql-upload'
-// import { finished } from 'stream/promises';
+import { GraphQLUpload  , graphqlUploadExpress } from 'graphql-upload';
 
 export const resolvers = {
     Upload: GraphQLUpload,
@@ -19,7 +18,7 @@ export const resolvers = {
   
         const out = require('fs').createWriteStream(`./uploadFiles/${filename}`);
         stream.pipe(out);
-  
+        console.log("C:/Users/Prince Agrawal/Desktop/weboneX/typescript-mongodb-setup/uploadFiles/"+`${filename}`)
         return { filename, mimetype, encoding };
       },
     },
