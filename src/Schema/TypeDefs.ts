@@ -19,7 +19,7 @@ export const typeDefs = gql`
     }
 
     type Mutation{
-        createNote(input: NoteInput): Note
+        createNote(title:String , discription:String , participants:[String]): Note
         updateNote(id: String! , input: NoteInput): Note
     }
 
